@@ -207,6 +207,12 @@ mod inner {
     }
 
     impl From<libc::timeval> for SystemTime {
+        /// Converts a [`libc::timeval`] into a [`SystemTime`].
+        ///
+        /// This allocates a new [`SystemTime`] on the stack.
+        ///
+        /// [`libc::timeval`]: ?
+        /// [`SystemTime`]: ../../std/time/struct.SystemTime.html
         fn from(t: libc::timeval) -> SystemTime {
             SystemTime::from(libc::timespec {
                 tv_sec: t.tv_sec,
@@ -216,6 +222,12 @@ mod inner {
     }
 
     impl From<libc::timespec> for SystemTime {
+        /// Converts a [`libc::timeval`] into a [`SystemTime`]
+        ///
+        /// This allocates a new [`SystemTime`] on the stack.
+        ///
+        /// [`libc::timeval`]: ?
+        /// [`SystemTime`]: ../../std/time/struct.SystemTime.html
         fn from(t: libc::timespec) -> SystemTime {
             SystemTime { t: Timespec { t: t } }
         }
@@ -331,6 +343,12 @@ mod inner {
     }
 
     impl From<libc::timespec> for SystemTime {
+        /// Converts a [`libc::timespec`] into a [`SystemTime`]
+        ///
+        /// This allocates a new [`SystemTime`] on the stack.
+        ///
+        /// [`libc::timespec`]: ?
+        /// [`SystemTime`]: struct.SystemTime.html
         fn from(t: libc::timespec) -> SystemTime {
             SystemTime { t: Timespec { t: t } }
         }
