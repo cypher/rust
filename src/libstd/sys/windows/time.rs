@@ -169,6 +169,12 @@ impl fmt::Debug for SystemTime {
 }
 
 impl From<c::FILETIME> for SystemTime {
+    /// Converts a `[c::FILETIME]` into a [`SystemTime`].
+    ///
+    /// This allocates a new [`SystemTime`] on the stack.
+    ///
+    /// [`c::FILETIME`]: struct.FILETIME.html
+    /// [`SystemTime`]: struct.SystemTime.html
     fn from(t: c::FILETIME) -> SystemTime {
         SystemTime { t: t }
     }
