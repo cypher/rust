@@ -186,6 +186,12 @@ impl SystemTime {
 }
 
 impl From<syscall::TimeSpec> for SystemTime {
+    /// Converts a [`syscall::TimeSpec`] into a [`SystemTime`]
+    ///
+    /// This allocates a new [`SystemTime`] on the stack.
+    ///
+    /// [`syscall::TimeSpec`]: ./syscall/data/struct.TimeSpec.html
+    /// [`SystemTime`]: struct.SystemTime.html
     fn from(t: syscall::TimeSpec) -> SystemTime {
         SystemTime { t: Timespec { t: t } }
     }
